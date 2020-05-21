@@ -86,14 +86,39 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/food.js":
+/*!*********************!*\
+  !*** ./src/food.js ***!
+  \*********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Food; });\nclass Food {\n\n    constructor(gameWidth,gameHeight) {\n        this.gameWidth = gameWidth;\n        this.gameHeight = gameHeight;\n        this.width = 150;\n        this.height = 150;\n\n        this.position = {\n          x: gameWidth / 2 - this.width /2,\n          y: gameHeight - this.height -50\n        };\n\n\n        this.maxSpeed = 5;\n        this.VmaxSpeed = 2;\n\n        this.speed = 0;\n        this.vspeed = 0;\n    }\n\n    moveLeft() {\n        this.position.x -= 50;\n    }\n\n    moveRight() {\n        this.position.x += 50;\n    }\n\n    moveUp() {\n        this.position.y -= 50;\n    }\n\n     moveDown() {\n        this.position.y += 50;\n    }\n\n\n\n\n    draw(ctx) {\n        ctx.fillStyle = '#f00'\n        ctx.fillRect(this.position.x, this.position.y, this.width,this.height)\n    }\n\n    update (deltaTime) {\n        if (!deltaTime) return;\n\n        if(this.position.x < 0) this.position.x = 0;\n        if(this.position.x + this.width > this.gameWidth) \n        this.position.x = this.gameWidth- this.width;\n\n        if (this.position.y < 0) this.position.y = 0;\n        if (this.position.y + this.height > this.gameHeight)\n          this.position.y = this.gameHeight - this.height;\n\n\n    }\n\n\n}\n\n//# sourceURL=webpack:///./src/food.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("\n\n//# sourceURL=webpack:///./src/index.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _food__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./food */ \"./src/food.js\");\n/* harmony import */ var _input__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./input */ \"./src/input.js\");\n\n\n\nlet canvas = document.getElementById(\"gameScreen\");\nlet ctx = canvas.getContext('2d');\n\nconst GAME_WIDTH = 800;\nconst GAME_HEIGHT = 600\n\n\n\nlet food = new _food__WEBPACK_IMPORTED_MODULE_0__[\"default\"](GAME_WIDTH,GAME_HEIGHT);\n\nfood.draw(ctx);\n\nlet lastTime = 0;\n\n\n\nnew _input__WEBPACK_IMPORTED_MODULE_1__[\"default\"](food);\n\n\n\nfunction gameLoop(timestamp) {\n    let deltaTime = timestamp - lastTime;\n    lastTime = timestamp;\n\n    ctx.clearRect(0, 0, 800, 600);\n       \n    food.update(deltaTime)\n\n    food.draw(ctx)\n\n\n    requestAnimationFrame(gameLoop)\n\n}\n\n\ngameLoop();\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/input.js":
+/*!**********************!*\
+  !*** ./src/input.js ***!
+  \**********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return InputHandler; });\nclass InputHandler {\n\n    constructor(food) {\n\n        document.addEventListener('keydown', event => {\n            \n            switch (event.keyCode) {\n              case 37:\n                food.moveLeft();\n\n                break;\n\n              case 38:\n                food.moveUp();\n\n                break;\n\n              case 39:\n                food.moveRight();\n\n                break;\n\n              case 40:\n                food.moveDown();\n\n                break;\n            }\n        })\n\n    }\n\n\n\n}\n\n//# sourceURL=webpack:///./src/input.js?");
 
 /***/ })
 

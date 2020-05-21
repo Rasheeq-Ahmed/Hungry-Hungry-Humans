@@ -3,10 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="index.css">
     <title>Hungry Hungry Humans</title>
 </head>
-<body>
-    <canvas id='game-canvas' width="500" height="500"></canvas>
-    <script src="main.js"></script>
+<!-- <body class='background'>
+    <header class=header>
+        <h1>Hungry Hungry Humans</h1>
+    </header> -->
+
+
+    <canvas id="gameScreen" width='800' height="600">
+            <progress id="health" value="100" max="100"></progress>
+
+    </canvas>
+    
+    <!-- <div class="body-all">
+        <div class="game-window">
+            <div class="score-timer">
+                <div class="score">
+                    <p> High Score: 0</p>
+                    <p>Score: 0</p>
+                </div>
+                <div class="timer">
+                    <h2>Time Left: 0</h2>
+                </div>
+            </div>
+            <div class="game-main">
+
+            </div>
+            <div class="game-menu">
+                <button id='startgame' onclick="startgame(this)" class='startgame'>Start Game</button>
+                <button id='instructions' class='instructions'>Instructions</button>
+
+            </div>
+        </div>
+    </div> -->
+
 </body>
 </html>
