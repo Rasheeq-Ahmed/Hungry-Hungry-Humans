@@ -35,6 +35,9 @@ export default class Food {
         this.position.y += 50;
     }
 
+    eaten() {
+        
+    }
 
 
 
