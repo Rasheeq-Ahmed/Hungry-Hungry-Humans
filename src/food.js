@@ -35,7 +35,15 @@ export default class Food {
         this.position.y += 50;
     }
 
-    eaten() {
+    eat() {
+        if (this.width != 0 || this.height != 0) {
+            this.width -= 10;
+            this.height -= 10;
+        }
+
+        if (this.width == 0 && this.height == 0) {
+            alert("GAME OVER/NEXT LEVEL");
+        }
         
     }
 

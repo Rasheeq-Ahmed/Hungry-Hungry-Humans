@@ -19,6 +19,14 @@ let lastTime = 0;
 
 new InputHandler(food);
 
+//images
+
+let imgBurger = document.getElementById("img_burger");
+
+
+
+
+
 
 
 function gameLoop(timestamp) {
@@ -30,6 +38,7 @@ function gameLoop(timestamp) {
     food.update(deltaTime)
 
     food.draw(ctx)
+    ctx.drawImage(imgBurger, 200, 200, 100, 100);
 
 
     requestAnimationFrame(gameLoop)

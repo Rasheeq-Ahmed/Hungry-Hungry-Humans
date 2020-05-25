@@ -5,6 +5,10 @@ export default class InputHandler {
         document.addEventListener('keydown', event => {
             
             switch (event.keyCode) {
+              case 32:
+                food.eat();
+
+                break;
               case 37:
                 food.moveLeft();
 
