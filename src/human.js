@@ -3,10 +3,11 @@ import {detectCollision} from './collision'
 export default class Human {
 
     constructor(game) {
+        this.image = document.getElementById("img_human");
         this.gameWidth = game.gameWidth;
         this.gameHeight = game.gameHeight;
         this.width = 40;
-        this.height = 10;
+        this.height = 40;
 
         this.position = {
           x: game.gameWidth / 2 - this.width /2,
@@ -36,17 +37,17 @@ export default class Human {
         this.yspeed = this.maxSpeed;
     }
 
-    eat() {
-        if (this.width != 0 || this.height != 0) {
-            this.width -= 10;
-            this.height -= 10;
-        }
+    // eat() {
+    //     if (this.width != 0 || this.height != 0) {
+    //         this.width -= 10;
+    //         this.height -= 10;
+    //     }
 
-        if (this.width == 0 && this.height == 0) {
-            alert("GAME OVER/NEXT LEVEL");
-        }
+    //     if (this.width == 0 && this.height == 0) {
+    //         alert("GAME OVER/NEXT LEVEL");
+    //     }
         
-    }
+    // }
     stopX (){
         this.xspeed = 0;
     }
@@ -56,8 +57,15 @@ export default class Human {
     draw(ctx) {
         // ctx.fillStyle = '#f00'
         // ctx.fillRect(this.position.x, this.position.y, this.width,this.height)
-        ctx.font = "30px Arial"
-        ctx.fillText("👅", this.position.x, this.position.y)
+        // ctx.font = "30px Arial"
+        // ctx.fillText("👅", this.position.x, this.position.y)
+           ctx.drawImage(
+             this.image,
+             this.position.x,
+             this.position.y,
+             this.width,
+             this.height
+           );
     }
 
     update (deltaTime) {

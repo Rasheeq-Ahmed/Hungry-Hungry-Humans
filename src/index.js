@@ -10,7 +10,7 @@ const GAME_HEIGHT = 750
 
 
 let game = new Game(GAME_WIDTH, GAME_HEIGHT);
-game.start();
+
 
 
 
@@ -23,7 +23,7 @@ let lastTime = 0;
 //images
 
 
-let background = document.getElementById("img_background");
+// let background = document.getElementById("img_background");
 
 
 

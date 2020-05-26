@@ -61,6 +61,7 @@ export default class Burger {
             // this.speed.y = -this.speed.y
             // this.speed.x = -this.speed.x
             // this.position.y = this.game.human.position.y - this.size;
+            this
             this.markedForDeletion = true;
             this.game.score+= 1
         }

@@ -20,33 +20,24 @@ export default class Game {
         this.gameHeight = gameHeight
 
         this.score = 0;
+        this.human = new Human(this);
+        // this.burger = new Burger(this);
+        new InputHandler(this.human, this);
+        this.gameObjects = [];
+        this.gamestate = GAMESTATE.MENU;
+
 
     }
 
     start() {
 
-        this.gamestate = GAMESTATE.RUNNING;
-        this.human = new Human(this);
-
-        
-        this.burger = new Burger(this);
-        // let SCORE = 0;
-        // let LEVEL = 1;
-        // const MAX_LEVEL = 5
-        let burgers = buildLevel(this, level1)
-
-        // for (let i= 0; i < 5; i++) {
-        //     burgers.push(new Burger(this))
-        // }
-
-        
+        let burgers = buildLevel(this, level1)        
         this.gameObjects = [
             ...burgers,
-            this.human,
-            
-        ]
+            this.human
+        ];
+        this.gamestate = GAMESTATE.RUNNING;
 
-        new InputHandler(this.human, this);
     }
 
 
@@ -66,7 +57,9 @@ export default class Game {
     }
 
     update(deltaTime) {
-        if (this.gamestate == GAMESTATE.PAUSED) return;
+        if (this.gamestate === GAMESTATE.PAUSED || 
+            this.gamestate === GAMESTATE.MENU) 
+            return;
 
         this.gameObjects.forEach((object) => object.update(deltaTime));
 
@@ -75,8 +68,46 @@ export default class Game {
     }
 
     draw(ctx) {
-
+        ctx.font = "50px Germania One";
+        ctx.fillText(`Score: ${this.score}`, this.gameWidth/ 2, this.gameHeight - 700)
         this.gameObjects.forEach((object) => object.draw(ctx))
+        
+        if (this.gamestate == GAMESTATE.PAUSED) {
+            ctx.rect(0,0, this.gameWidth, this.gameHeight);
+            ctx.fillStyle = "rgba(0,0,0,0.9)";
+            ctx.fill();
+
+            ctx.font = "30px Arial"
+            ctx.fillStyle = "white"
+
+            ctx.textAlign = "center"
+            ctx.fillText("The Game Is Paused. To Resume, Press P", this.gameWidth / 2, this.gameHeight/ 2)
+
+        }
+
+
+         if (this.gamestate === GAMESTATE.MENU) {
+           ctx.rect(0, 0, this.gameWidth, this.gameHeight);
+           ctx.fillStyle = "rgba(0,0,0,1)";
+           ctx.fill();
+
+           ctx.font = "30px Arial";
+           ctx.fillStyle = "white";
+
+           ctx.textAlign = "center";
+           ctx.fillText(
+             "Press ENTER To Start",
+             this.gameWidth / 2,
+             this.gameHeight / 2
+           );
+         }
+
+
+
+        if (this.gamestate == GAMESTATE.RUNNING) {
+            ctx.fillStyle = "black";
+
+        }
 
     }
 
