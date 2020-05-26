@@ -10,41 +10,40 @@
 
     <title>Hungry Hungry Humans</title>
 </head>
-<!-- <body class='background'>
+<body class='background'>
     <header class=header>
-        <h1>Hungry Hungry Humans</h1>
-    </header> -->
+        
+    </header>
     <img id="img_burger" src="assets/burger.png"/>
     <img id="img_background" src="assets/food-background.png" />
     <img id="img_human" src="assets/human.png" />
 
 
-    <canvas id="gameScreen" width='800' height="750">
-            <progress id="health" value="100" max="100"></progress>
-
-    </canvas>
     
-    <!-- <div class="body-all">
+    
+    <div class="body-all">
         <div class="game-window">
-            <div class="score-timer">
-                <div class="score">
-                    <p> High Score: 0</p>
-                    <p>Score: 0</p>
-                </div>
-                <div class="timer">
-                    <h2>Time Left: 0</h2>
-                </div>
-            </div>
+        <h1 class='title'>🍔 Hungry Hungry Humans 🍔</h1>
+        <progress id="health" value="100" max="50"></progress>
             <div class="game-main">
+                <div class="game-main-left">
+                    <canvas id="gameScreen" width='800' height="750">
+                    
+                    </canvas>
+                </div>
+                <div class="game-main-right">
+                    <div class="controls">
+                        <ul>
+
+                        </ul>
+                    </div>
+                
+                </div>
 
             </div>
-            <div class="game-menu">
-                <button id='startgame' onclick="startgame(this)" class='startgame'>Start Game</button>
-                <button id='instructions' class='instructions'>Instructions</button>
-
-            </div>
+            
         </div>
-    </div> -->
+    </div>
 
 </body>
 </html>

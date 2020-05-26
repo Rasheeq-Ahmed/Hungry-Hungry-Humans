@@ -15,10 +15,12 @@ const GAMESTATE = {
 
 }
 
+
+
 export default class Game {
 
     constructor(gameWidth, gameHeight) {
-
+        this.health = document.getElementById("health")
         this.gameWidth = gameWidth
         this.gameHeight = gameHeight
 
@@ -41,12 +43,15 @@ export default class Game {
 
         if (this.gamestate !== GAMESTATE.MENU &&
             this.gamestate !== GAMESTATE.NEWLEVEL) return;
-
-        this.burgers = buildLevel(this, this.levels[this.currentLevel]);        
+        
+        this.burgers = buildLevel(this, this.levels[this.currentLevel]); 
+               
         this.gameObjects = [
             this.human
         ];
         this.gamestate = GAMESTATE.RUNNING;
+        // this.health.value -= 10;
+        // this.health.max -= 10;
 
     }
 
@@ -76,7 +81,6 @@ export default class Game {
 
         
 
-
         if (this.gamestate === GAMESTATE.PAUSED || 
             this.gamestate === GAMESTATE.MENU ||
             this.gamestate === GAMESTATE.GAMEOVER)
@@ -85,13 +89,23 @@ export default class Game {
             if (this.burgers.length === 0 && this.currentLevel < 4) {
                 this.currentLevel +=1;
                 this.gamestate = GAMESTATE.NEWLEVEL;
-                // this.human.maxSpeed /= 4;
+                this.human.maxSpeed /= 3;
                 this.human.width -= 5;
                 this.human.height -= 5;
+                this.health.value = 100;
                 this.start();
+
             }
+            this.health.value -= 0.04;
+
+
+        if (this.health.value === 0) {
+            this.gamestate = GAMESTATE.GAMEOVER;
+        }
         if (this.currentLevel === 4) {
-            this.gamestate = GAMESTATE.WINNER
+            this.gamestate = GAMESTATE.WINNER;
+            this.health.value = 100;
+
         }
 
 
@@ -129,6 +143,19 @@ export default class Game {
 
            ctx.font = "30px Arial";
            ctx.fillStyle = "white";
+            ctx.textAlign = "center";
+           ctx.fillText(
+             "Eat All The Burgers Before Times Up. ",
+             this.gameWidth / 2,
+             this.gameHeight / 8);
+             ctx.fillText(
+               "Arrow Keys to Move, P to Pause. ",
+               this.gameWidth / 2,
+               this.gameHeight / 5
+             );
+
+
+
 
            ctx.textAlign = "center";
            ctx.fillText(
