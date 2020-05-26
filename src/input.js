@@ -23,6 +23,9 @@ export default class InputHandler {
               case 80:
                 game.togglePause();
                 break;
+            //   case 82:
+            //     game.menu();
+            //     break;
               case 13:
                 game.start();
                 break;

@@ -71,6 +71,11 @@ export default class Game {
         }
     }
 
+    //     menu() {
+    //     this.gamestate = GAMESTATE.MENU;
+    //     this.health.value = 100;
+    // }
+
     // reset() {
     //     this.human.width = 40;
     //     this.human.height = 40;
@@ -176,7 +181,7 @@ export default class Game {
 
            ctx.textAlign = "center";
            ctx.fillText(
-             "GAME OVER",
+             "Game Over! Refresh Page To Try Again",
              this.gameWidth / 2,
              this.gameHeight / 2
            );
@@ -191,7 +196,7 @@ export default class Game {
            ctx.fillStyle = "white";
 
            ctx.textAlign = "center";
-           ctx.fillText("CONGRATS! YOU WON!", this.gameWidth / 2, this.gameHeight / 2);
+           ctx.fillText("CONGRATS! YOU WON! Refresh Page To Play Again", this.gameWidth / 2, this.gameHeight / 2);
          }
 
 
