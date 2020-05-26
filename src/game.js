@@ -5,6 +5,12 @@ import Burger from "./burger";
 
 import {buildLevel, level1} from './levels'
 
+const GAMESTATE = {
+    PAUSED: 0,
+    RUNNING: 1,
+    MENU: 2,
+    GAMEOVER: 3
+}
 
 export default class Game {
 
@@ -18,6 +24,8 @@ export default class Game {
     }
 
     start() {
+
+        this.gamestate = GAMESTATE.RUNNING;
         this.human = new Human(this);
 
         
@@ -38,24 +46,31 @@ export default class Game {
             
         ]
 
-        new InputHandler(this.human);
+        new InputHandler(this.human, this);
     }
 
 
-    showGameStats(text, textX, textY, label) {
-        ctx.fillStyle = '#FFF';
-        ctx.font = "20px Arial";
-        ctx.fillText(text, textX, textY)
+    // showGameStats(text, textX, textY, label) {
+    //     ctx.fillStyle = '#FFF';
+    //     ctx.font = "20px Arial";
+    //     ctx.fillText(text, textX, textY)
 
+    // }
+
+    togglePause() {
+        if (this.gamestate == GAMESTATE.PAUSED) {
+            this.gamestate = GAMESTATE.RUNNING;
+        } else {
+            this.gamestate = GAMESTATE.PAUSED;
+        }
     }
-
 
     update(deltaTime) {
-      
+        if (this.gamestate == GAMESTATE.PAUSED) return;
 
-            this.gameObjects.forEach((object) => object.update(deltaTime));
+        this.gameObjects.forEach((object) => object.update(deltaTime));
 
-            this.gameObjects = this.gameObjects.filter(object => !object.markedForDeletion)
+        this.gameObjects = this.gameObjects.filter(object => !object.markedForDeletion)
 
     }
 

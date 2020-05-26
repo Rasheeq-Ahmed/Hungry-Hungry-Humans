@@ -21,7 +21,7 @@ export default class Burger {
         this.speed = {
         //   x: Math.floor(Math.random() * 8),
         //   y: Math.floor(Math.random() * 7),
-        x: 0,
+        x: 2,
         y: 0
         };
 

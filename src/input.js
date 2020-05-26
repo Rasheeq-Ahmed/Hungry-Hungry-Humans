@@ -1,40 +1,43 @@
 export default class InputHandler {
 
-    constructor(food) {
+    constructor(human,game) {
 
         document.addEventListener('keydown', event => {
             
             switch (event.keyCode) {
               case 32:
-                food.eat();
+                human.eat();
                 break;
               case 37:
-                food.moveLeft();
+                human.moveLeft();
                 break;
               case 38:
-                food.moveUp();
+                human.moveUp();
                 break;
               case 39:
-                food.moveRight();
+                human.moveRight();
                 break;
               case 40:
-                food.moveDown();
+                human.moveDown();
+                break;
+              case 80:
+                game.togglePause();
                 break;
             }
         });
         document.addEventListener("keyup", (event) => {
           switch (event.keyCode) {
             case 37:
-              if(food.xspeed < 0) food.stopX();
+              if(human.xspeed < 0) human.stopX();
               break;
             case 38:
-              if (food.yspeed < 0) food.stopY();
+              if (human.yspeed < 0) human.stopY();
               break;
             case 39:
-             if (food.xspeed > 0) food.stopX();
+             if (human.xspeed > 0) human.stopX();
               break;
             case 40:
-              if (food.yspeed > 0) food.stopY();
+              if (human.yspeed > 0) human.stopY();
               break;
           }
         });
