@@ -3,7 +3,7 @@ export default class Human {
     constructor(game) {
         this.gameWidth = game.gameWidth;
         this.gameHeight = game.gameHeight;
-        this.width = 300;
+        this.width = 20;
         this.height = 20;
 
         this.position = {
@@ -13,26 +13,25 @@ export default class Human {
 
 
         this.maxSpeed = 5;
-        this.VmaxSpeed = 2;
 
-        this.speed = 0;
-        this.vspeed = 0;
+        this.xspeed = 0;
+        this.yspeed = 0;
     }
 
     moveLeft() {
-        this.position.x -= 10;
+        this.xspeed = -this.maxSpeed;
     }
 
     moveRight() {
-        this.position.x += 10;
+        this.xspeed = this.maxSpeed;
     }
 
     moveUp() {
-        this.position.y -= 10;
+        this.yspeed = -this.maxSpeed;
     }
 
      moveDown() {
-        this.position.y += 10;
+        this.yspeed = this.maxSpeed;
     }
 
     eat() {
@@ -46,19 +45,27 @@ export default class Human {
         }
         
     }
-
-
-
+    stopX (){
+        this.xspeed = 0;
+    }
+    stopY() {
+        this.yspeed = 0;
+    }
     draw(ctx) {
-        ctx.fillStyle = '#f00'
-        ctx.fillRect(this.position.x, this.position.y, this.width,this.height)
+        // ctx.fillStyle = '#f00'
+        // ctx.fillRect(this.position.x, this.position.y, this.width,this.height)
+        ctx.font = "20px Arial"
+        ctx.fillText("👅", this.position.x, this.position.y)
     }
 
     update (deltaTime) {
+        this.position.x += this.xspeed;
+        this.position.y += this.yspeed;
+
 
         if(this.position.x < 0) this.position.x = 0;
         if(this.position.x + this.width > this.gameWidth) 
-        this.position.x = this.gameWidth- this.width;
+        this.position.x = this.gameWidth - this.width;
 
         if (this.position.y < 0) this.position.y = 0;
         if (this.position.y + this.height > this.gameHeight)

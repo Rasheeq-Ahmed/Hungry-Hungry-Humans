@@ -2,8 +2,8 @@
 import Human from "./human";
 import InputHandler from "./input";
 import Burger from "./burger";
-import Mouth from './mouth';
 
+import {buildLevel, level1} from './levels'
 
 
 export default class Game {
@@ -19,20 +19,34 @@ export default class Game {
 
     start() {
         this.human = new Human(this);
+
+        
         this.burger = new Burger(this);
-        let mouth = new Mouth(this, {x: 20, y: 20})
+        // let SCORE = 0;
+        // let LEVEL = 1;
+        // const MAX_LEVEL = 5
+        let burgers = buildLevel(this, level1)
 
-        let mouths = []
+        // for (let i= 0; i < 5; i++) {
+        //     burgers.push(new Burger(this))
+        // }
 
-    
-
+        
         this.gameObjects = [
-            this.burger,
+            ...burgers,
             this.human,
-            mouth
+            
         ]
 
         new InputHandler(this.human);
+    }
+
+
+    showGameStats(text, textX, textY, label) {
+        ctx.fillStyle = '#FFF';
+        ctx.font = "20px Arial";
+        ctx.fillText(text, textX, textY)
+
     }
 
 
@@ -41,11 +55,13 @@ export default class Game {
 
             this.gameObjects.forEach((object) => object.update(deltaTime));
 
+            this.gameObjects = this.gameObjects.filter(object => !object.markedForDeletion)
+
     }
 
     draw(ctx) {
 
-            this.gameObjects.forEach((object) => object.draw(ctx))
+        this.gameObjects.forEach((object) => object.draw(ctx))
 
     }
 

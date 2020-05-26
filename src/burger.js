@@ -1,3 +1,6 @@
+import { detectCollision} from './collision'
+
+
 export default class Burger {
 
     constructor(game) {
@@ -10,11 +13,20 @@ export default class Burger {
         this.game = game;
 
 
-        this.position = {x: 10, y:10}
+        this.position = {
+          x: Math.floor(Math.random() * 700 ),
+          y: Math.floor(Math.random() * 500)
+        };
 
-        this.speed = {x: 2, y: 2}
+        this.speed = {
+          x: 2,
+          y: 2,
+        };
 
         this.size = 50;
+
+        this.markedForDeletion = false;
+
     }
 
 
@@ -42,21 +54,14 @@ export default class Burger {
 
 
 
-        let bottomOfBurger = this.position.y + this.size;
-        let topSideHuman = this.game.human.position.y;
-        let bottomSideHuman = this.game.human.position.y - this.game.human.height;
 
-        let leftSideHuman = this.game.human.position.x;
-        let rightSideHuman = this.game.human.position.x + this.game.human.width;
+        if (detectCollision(this, this.game.human))  {
 
-        if(bottomOfBurger >= topSideHuman
-            && this.position.x >= leftSideHuman
-
-            && this.position.x  + this.size <= rightSideHuman
-
-            ) {
-            this.speed.y = -this.speed.y
-            this.position.y = this.game.human.position.y - this.size;
+            // this.speed.y = -this.speed.y
+            // this.speed.x = -this.speed.x
+            // this.position.y = this.game.human.position.y - this.size;
+            this.markedForDeletion = true;
+            // this.game.score+= 1
         }
 
 
