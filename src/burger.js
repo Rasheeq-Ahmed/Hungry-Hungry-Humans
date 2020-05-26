@@ -19,10 +19,10 @@ export default class Burger {
         };
 
         this.speed = {
-        //   x: Math.floor(Math.random() * 8),
-        //   y: Math.floor(Math.random() * 7),
-        x: 2,
-        y: 0
+          x: Math.floor(Math.random() * 5),
+          y: Math.floor(Math.random() * 5),
+        // x: 2,
+        // y: 0
         };
 
         this.size = 50;

@@ -9,11 +9,14 @@ export function buildLevel(game, level) {
         }
 
 
-    return burgers
+    return burgers;
 }
 
 
 
 export const level1 = 5;
+export const level2 = 6;
+export const level3 = 7;
+
 
 
