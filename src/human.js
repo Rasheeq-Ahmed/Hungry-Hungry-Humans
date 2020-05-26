@@ -1,14 +1,14 @@
-export default class Food {
+export default class Human {
 
-    constructor(gameWidth,gameHeight) {
-        this.gameWidth = gameWidth;
-        this.gameHeight = gameHeight;
-        this.width = 150;
-        this.height = 150;
+    constructor(game) {
+        this.gameWidth = game.gameWidth;
+        this.gameHeight = game.gameHeight;
+        this.width = 300;
+        this.height = 20;
 
         this.position = {
-          x: gameWidth / 2 - this.width /2,
-          y: gameHeight - this.height -50
+          x: game.gameWidth / 2 - this.width /2,
+          y: game.gameHeight - this.height -50
         };
 
 
@@ -20,19 +20,19 @@ export default class Food {
     }
 
     moveLeft() {
-        this.position.x -= 50;
+        this.position.x -= 10;
     }
 
     moveRight() {
-        this.position.x += 50;
+        this.position.x += 10;
     }
 
     moveUp() {
-        this.position.y -= 50;
+        this.position.y -= 10;
     }
 
      moveDown() {
-        this.position.y += 50;
+        this.position.y += 10;
     }
 
     eat() {
@@ -55,7 +55,6 @@ export default class Food {
     }
 
     update (deltaTime) {
-        if (!deltaTime) return;
 
         if(this.position.x < 0) this.position.x = 0;
         if(this.position.x + this.width > this.gameWidth) 

@@ -1,5 +1,5 @@
-import Food from './food'
-import InputHandler from './input';
+import Game from "./game";
+
 
 let canvas = document.getElementById("gameScreen");
 let ctx = canvas.getContext('2d');
@@ -9,22 +9,21 @@ const GAME_HEIGHT = 600
 
 
 
-let food = new Food(GAME_WIDTH,GAME_HEIGHT);
+let game = new Game(GAME_WIDTH, GAME_HEIGHT);
+game.start();
 
-food.draw(ctx);
+
+
 
 let lastTime = 0;
 
 
 
-new InputHandler(food);
 
 //images
 
-let imgBurger = document.getElementById("img_burger");
 
-
-
+let background = document.getElementById("img_background");
 
 
 
@@ -32,18 +31,16 @@ let imgBurger = document.getElementById("img_burger");
 function gameLoop(timestamp) {
     let deltaTime = timestamp - lastTime;
     lastTime = timestamp;
-
-    ctx.clearRect(0, 0, 800, 600);
-       
-    food.update(deltaTime)
-
-    food.draw(ctx)
-    ctx.drawImage(imgBurger, 200, 200, 100, 100);
-
+    ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+    ctx.drawImage(background,0,0)
+    
+    game.update(deltaTime);
+    game.draw(ctx);
+    
 
     requestAnimationFrame(gameLoop)
 
 }
 
 
-gameLoop();
+requestAnimationFrame(gameLoop);
