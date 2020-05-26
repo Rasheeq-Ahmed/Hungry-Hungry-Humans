@@ -11,13 +11,15 @@ export function detectCollision(burger, gameObject) {
     let rightObject = gameObject.position.x + gameObject.width;
 
     if (
-      bottomOfBurger >= topObject &&
-      topOfBurger <= bottomObject &&
-      burger.position.x > leftObject &&
-      burger.position.x < rightObject
+      //   bottomOfBurger + burger.size>= topObject &&
+      //   topOfBurger <= bottomObject &&
+      burger.position.x + burger.size >= leftObject &&
+      burger.position.x <= rightObject &&
+      burger.position.y + burger.size >= topObject &&
+      burger.position.y <= bottomObject
     ) {
       return true;
     } else {
-        return false;
+      return false;
     }
 }

@@ -4,7 +4,7 @@ import Game from "./game";
 let canvas = document.getElementById("gameScreen");
 let ctx = canvas.getContext('2d');
 
-const GAME_WIDTH = 1200;
+const GAME_WIDTH = 600;
 const GAME_HEIGHT = 750
 
 

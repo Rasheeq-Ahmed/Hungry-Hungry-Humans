@@ -19,12 +19,13 @@ export default class Burger {
         };
 
         this.speed = {
-          x: 2,
-          y: 2,
+        //   x: Math.floor(Math.random() * 8),
+        //   y: Math.floor(Math.random() * 7),
+        x: 0,
+        y: 0
         };
 
         this.size = 50;
-
         this.markedForDeletion = false;
 
     }
@@ -61,7 +62,7 @@ export default class Burger {
             // this.speed.x = -this.speed.x
             // this.position.y = this.game.human.position.y - this.size;
             this.markedForDeletion = true;
-            // this.game.score+= 1
+            this.game.score+= 1
         }
 
 

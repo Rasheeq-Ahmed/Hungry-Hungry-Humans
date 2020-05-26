@@ -14,4 +14,6 @@ export function buildLevel(game, level) {
 
 
 
-export const level1 = 5
+export const level1 = 5;
+
+
