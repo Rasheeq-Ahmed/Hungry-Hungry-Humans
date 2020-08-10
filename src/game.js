@@ -196,7 +196,8 @@ export default class Game {
            ctx.fillStyle = "white";
 
            ctx.textAlign = "center";
-           ctx.fillText("CONGRATS! YOU WON! Refresh Page To Play Again", this.gameWidth / 2, this.gameHeight / 2);
+           ctx.fillText("CONGRATS! YOU WON!", this.gameWidth / 2, this.gameHeight / 2);
+           ctx.fillText("Refresh Page To Play Again", this.gameWidth / 2, this.gameHeight / 1.7);
          }
 
 

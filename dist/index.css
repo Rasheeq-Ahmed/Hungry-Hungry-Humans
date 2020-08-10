@@ -4,10 +4,10 @@
 }
 
  #gameScreen {
-     border: 1px solid black;
-     background-color: rgba(245, 245, 245, 0.603);
+     /* border: 1px solid black; */
+     background-color: rgba(245, 245, 245, 0.856);
      margin: 0;
-     height: 100;
+     /* height: 100; */
  }
 
  img {
@@ -18,7 +18,7 @@
    -webkit-appearance: none;
    appearance: none;
 
-  width: 700px;
+  width: 600px;
   height: 20px;
  }
 
@@ -29,8 +29,11 @@
      background-image: url('../assets/food-background.png');
      margin: 0;
      width: 100%;
-     height: 100%;
+     height: 100vh;
      /* overflow: visible; */
+     display: flex;
+     justify-content: center;
+     align-items: center;
 
  }
 
@@ -40,6 +43,7 @@
      justify-content: center;
      text-align: center;
      margin: 0;
+     /* height: 80%; */
  }
 
  .game-window {
@@ -47,10 +51,12 @@
  }
 
  .title {
-     font-size: 30px;
+     width: 100%;
+     font-size: 3em;
      color: rgb(255, 255, 255);
-     background-color: rgba(0, 0, 0, 0.678);
+     background-color: rgba(0, 0, 0, 0.89);
      margin: 0;
+     margin-bottom: .5em;
  }
 
 

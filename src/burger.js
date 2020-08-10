@@ -14,8 +14,8 @@ export default class Burger {
 
 
         this.position = {
-          x: Math.floor(Math.random() * 700 ),
-          y: Math.floor(Math.random() * 500)
+            x: Math.floor(Math.random() * (this.gameWidth - 41)),
+            y: Math.floor(Math.random() * (this.gameHeight - 41))
         };
 
         this.speed = {
@@ -25,7 +25,7 @@ export default class Burger {
         // y: 0
         };
 
-        this.size = 50;
+        this.size = 40;
         this.markedForDeletion = false;
 
     }
